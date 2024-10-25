@@ -1,4 +1,4 @@
-import Avatar from 'components/Avatar'
+import Avatar from 'features/Avatar'
 import logo from 'assets/logo.svg'
 
 const randoms = [
