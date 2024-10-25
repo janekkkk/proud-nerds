@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../button/Button'
+import { useMount } from 'react-use'
 
 interface Props {
   paginationInfo?: PaginationInfo
@@ -8,6 +9,7 @@ interface Props {
 
 export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
   const [currentPageIndex, setCurrentPageIndex] = useState(1)
+  const [maxNumberOfResults, setMaxNumberOfResults] = useState(0)
 
   const goToPreviousPage = () => {
     const newIndex = currentPageIndex - 1
@@ -21,6 +23,15 @@ export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
     paginationUpdated(paginationInfo?.next as string)
   }
 
+  console.log(currentPageIndex * maxNumberOfResults, paginationInfo?.count)
+
+  useMount(() => {
+    if (paginationInfo?.numberOfResults) {
+      console.log(paginationInfo)
+      setMaxNumberOfResults(paginationInfo?.numberOfResults)
+    }
+  })
+
   if (paginationInfo)
     return (
       <nav
@@ -31,12 +42,12 @@ export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
           <p className="text-sm text-gray-700">
             Showing{' '}
             <span className="font-medium">
-              {currentPageIndex * paginationInfo.numberOfResults -
-                paginationInfo.numberOfResults}
+              {currentPageIndex * maxNumberOfResults - maxNumberOfResults}
             </span>{' '}
             to{' '}
             <span className="font-medium">
-              {currentPageIndex * paginationInfo.numberOfResults}
+              {currentPageIndex * maxNumberOfResults}
+              {/*ToDo handle last result i.e. 100 to 107*/}
             </span>{' '}
             of <span className="font-medium">{paginationInfo.count}</span>{' '}
             results
@@ -47,9 +58,9 @@ export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
             Previous
           </Button>
           <Button
+            // ToDo fix next button disabled bug on last page
             disabled={
-              currentPageIndex * paginationInfo.numberOfResults >=
-              paginationInfo.count
+              currentPageIndex * maxNumberOfResults >= paginationInfo.count
             }
             onClick={goToNextPage}
           >

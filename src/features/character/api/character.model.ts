@@ -1,6 +1,7 @@
 interface CharacterDTO {
   info: PaginationInfo
   results: Character[]
+  error?: string
 }
 
 interface Character {
