@@ -1,5 +1,5 @@
 interface CharacterDTO {
-  info: Info
+  info: PaginationInfo
   results: Character[]
 }
 
@@ -23,9 +23,10 @@ interface Origin {
   url: string
 }
 
-interface Info {
+interface PaginationInfo {
   count: number
   pages: number
   next: string
-  prev?: any
+  prev?: string
+  numberOfResults: number
 }

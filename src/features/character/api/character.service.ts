@@ -8,6 +8,18 @@ class CharacterService {
       })
       .then((dto: CharacterDTO) => dto.results)
   }
+
+  public async fetchByName(name: string): Promise<CharacterDTO> {
+    return fetch(
+      this.baseURL +
+        '?' +
+        new URLSearchParams({
+          name
+        }).toString()
+    ).then((response) => {
+      return response.json()
+    })
+  }
 }
 
 export const characterService = new CharacterService()
