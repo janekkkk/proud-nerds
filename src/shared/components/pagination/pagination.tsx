@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../button/Button'
-import { useMount } from 'react-use'
 import { classNames } from '../../../utils'
 
 interface Props {
@@ -29,14 +28,15 @@ export const Pagination = ({
     paginationUpdated(paginationInfo?.next as string)
   }
 
-  console.log(currentPageIndex * maxNumberOfResults, paginationInfo?.count)
-
-  useMount(() => {
-    if (paginationInfo?.numberOfResults) {
-      console.log({ paginationInfo })
+  useEffect(() => {
+    if (paginationInfo?.numberOfResults && maxNumberOfResults === 0) {
       setMaxNumberOfResults(paginationInfo?.numberOfResults)
     }
-  })
+    if (paginationInfo?.prev === null) {
+      setCurrentPageIndex(1)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paginationInfo])
 
   if (paginationInfo)
     return (
@@ -51,12 +51,11 @@ export const Pagination = ({
           <p className="text-sm text-gray-700">
             Showing{' '}
             <span className="font-medium">
-              {currentPageIndex * maxNumberOfResults - maxNumberOfResults}
+              {currentPageIndex * maxNumberOfResults - maxNumberOfResults + 1}
             </span>{' '}
             to{' '}
             <span className="font-medium">
               {currentPageIndex * maxNumberOfResults}
-              {/*ToDo handle last result i.e. 100 to 107*/}
             </span>{' '}
             of <span className="font-medium">{paginationInfo.count}</span>{' '}
             results
@@ -67,7 +66,6 @@ export const Pagination = ({
             Previous
           </Button>
           <Button
-            // ToDo fix next button disabled bug on last page
             disabled={
               currentPageIndex * maxNumberOfResults >= paginationInfo.count
             }

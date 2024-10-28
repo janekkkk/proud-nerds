@@ -10,9 +10,7 @@ export const HomePage = () => {
   const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>()
 
   const refreshCharactersWithPagination = (data: CharacterDTO) => {
-    console.log({ data })
     setCharacters(data.results)
-    // ToDo Fix bugs in pagination.
     setPaginationInfo({ ...data.info, numberOfResults: data.results.length })
   }
 
@@ -37,7 +35,7 @@ export const HomePage = () => {
 
   return (
     <div className="relative overflow-hidden bg-white">
-      <div className=" h-screen">
+      <div className="h-screen">
         <div className="m-10 flex h-full flex-col gap-6">
           <Search debounceCallback={afterDebounce} className="grow-0" />
           <CharacterOverview characters={characters} className="flex-1" />
