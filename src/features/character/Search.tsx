@@ -12,13 +12,11 @@ export const Search = ({
   defaultValue = '',
   debounceTime: debounceTimeInMs = 1000
 }: Props) => {
-  const [, setInputState] = useState('Typing stopped')
   const [inputValue, setInputValue] = useState(defaultValue)
   const inputRef = useRef<HTMLInputElement>()
 
   const [,] = useDebounce(
     () => {
-      setInputState('Typing stopped')
       debounceCallback(inputValue)
     },
     debounceTimeInMs,
@@ -55,7 +53,6 @@ export const Search = ({
           value={inputValue}
           placeholder="Enter character name to search..."
           onChange={({ currentTarget }) => {
-            setInputState('Waiting for typing to stop...')
             setInputValue(currentTarget.value)
           }}
           autoFocus

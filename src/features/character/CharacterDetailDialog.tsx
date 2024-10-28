@@ -6,13 +6,12 @@ import {
   DialogTitle
 } from '@headlessui/react'
 import { useToggle } from 'react-use'
-import { characterService } from './api/character.service'
-import { Episode } from './api/episode.model'
+import { Episode } from '../../shared/services/api/episode/episode.model'
 import { classNames } from '../../utils'
-import { episodeService } from './api/episode.service'
+import { episodeService } from '../../shared/services/api/episode/episode.service'
 
 interface Props {
-  character: Character | undefined
+  character?: Character
 }
 
 export const CharacterDetailDialog = ({ character }: Props) => {

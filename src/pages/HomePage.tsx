@@ -1,29 +1,28 @@
 import { CharacterOverview } from '../features/character/CharacterOverview'
-import { useState } from 'react'
-import { characterService } from '../features/character/api/character.service'
+import React, { useState } from 'react'
+import { characterService } from '../shared/services/api/character/character.service'
 import { Pagination } from '../shared/components/pagination/pagination'
 import { Search } from '../features/character/Search'
+import { Logic } from '../features/logic/Logic'
 
 export const HomePage = () => {
   const [characters, setCharacters] = useState<Character[]>([])
   const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>()
 
-  const onPaginationUpdated = async (followUpUrl: string) => {
-    const data = await fetch(followUpUrl).then((response) => response.json())
+  const refreshCharactersWithPagination = (data: CharacterDTO) => {
     setCharacters(data.results)
     setPaginationInfo({ ...data.info, numberOfResults: data.results.length })
   }
 
+  const onPaginationUpdated = async (followUpURL: string) => {
+    const data = await fetch(followUpURL).then((response) => response.json())
+    refreshCharactersWithPagination(data)
+  }
+
   const fetchByName = (name: string) => {
     characterService.fetchByName(name).then((data) => {
-      console.log({ data })
-
       if (!data.error) {
-        setCharacters(data.results)
-        setPaginationInfo({
-          ...data.info,
-          numberOfResults: data.results.length
-        })
+        refreshCharactersWithPagination(data)
       } else {
         // ToDo handle error. Show to the user that there is nothing found.
       }
@@ -44,6 +43,7 @@ export const HomePage = () => {
             paginationInfo={paginationInfo}
             paginationUpdated={onPaginationUpdated}
           />
+          <Logic isLogging={true} />
         </div>
       </div>
     </div>

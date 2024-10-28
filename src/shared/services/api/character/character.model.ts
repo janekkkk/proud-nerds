@@ -19,11 +19,6 @@ interface Character {
   created: string
 }
 
-interface Origin {
-  name: string
-  url: string
-}
-
 interface PaginationInfo {
   count: number
   pages: number

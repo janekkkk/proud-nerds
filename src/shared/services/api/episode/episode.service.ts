@@ -1,10 +1,33 @@
-import { Episode } from './episode.model'
+import { Episode, EpisodesDTO } from './episode.model'
 
 /**
  * https://rickandmortyapi.com/documentation/#episode
  */
 class EpisodeService {
-  private baseURL = 'https://rickandmortyapi.com/api/episode'
+  private readonly baseURL = 'https://rickandmortyapi.com/api/episode'
+
+  public async fetchAllEpisodes(): Promise<Episode[]> {
+    const episodes: Episode[] = []
+    let nextUrl: string | null = this.baseURL
+
+    while (nextUrl) {
+      // ToDo this can be more performant if I fetch pages instead of separate episodes using pagination.
+      const episodesDTO = await this.fetchEpisodes(nextUrl)
+
+      if (episodesDTO) {
+        episodes.push(...episodesDTO.results)
+        nextUrl = episodesDTO.info.next
+      } else {
+        nextUrl = null
+      }
+    }
+
+    return episodes
+  }
+
+  private async fetchEpisodes(url: string): Promise<EpisodesDTO> {
+    return fetch(url).then((response) => response.json())
+  }
 
   public async fetchEpisodesFromURLs(
     episodeURLs: string[]
