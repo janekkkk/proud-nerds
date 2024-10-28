@@ -45,7 +45,7 @@ export const Search = ({
         htmlFor="search"
         className="block text-sm font-medium leading-6 text-gray-900"
       >
-        Quick search
+        Quick search characters
       </label>
       <div className="relative mt-2 flex items-center">
         <input

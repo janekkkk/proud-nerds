@@ -12,6 +12,7 @@ export const HomePage = () => {
   const refreshCharactersWithPagination = (data: CharacterDTO) => {
     console.log({ data })
     setCharacters(data.results)
+    // ToDo Fix bugs in pagination.
     setPaginationInfo({ ...data.info, numberOfResults: data.results.length })
   }
 
@@ -40,6 +41,7 @@ export const HomePage = () => {
         <div className="m-10 flex h-full flex-col gap-6">
           <Search debounceCallback={afterDebounce} className="grow-0" />
           <CharacterOverview characters={characters} className="flex-1" />
+          {/*ToDo Possible improvement would be to implement infinite scroll instead of pagination*/}
           <Pagination
             paginationInfo={paginationInfo}
             paginationUpdated={onPaginationUpdated}

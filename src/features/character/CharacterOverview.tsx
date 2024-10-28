@@ -14,7 +14,7 @@ export const CharacterOverview = ({ characters, className }: Props) => {
     return (
       <div className={classNames(className, 'overflow-auto')}>
         <ul>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {characters.map((character) => {
               return (
                 <li
@@ -51,6 +51,7 @@ export const CharacterOverview = ({ characters, className }: Props) => {
       </div>
     )
   } else {
+    // ToDo Improve UX with skeleton loading?
     return <div>Loading...</div>
   }
 }

@@ -62,13 +62,13 @@ export const CharacterDetailDialog = ({ character }: Props) => {
                         <img
                           src={character?.image}
                           alt=""
-                          className="mx-auto size-32 shrink-0 rounded-full"
+                          className="mx-auto my-2 size-32 shrink-0 rounded-full"
                         />
                       </li>
                       <li>Name: {character?.name}</li>
                       <li>Type: {character?.type}</li>
                       <li>Gender: {character?.gender}</li>
-                      <li>Species {character?.species}</li>
+                      <li>Species: {character?.species}</li>
                       <li>Status: {character?.status}</li>
                       <li
                         className={classNames({
