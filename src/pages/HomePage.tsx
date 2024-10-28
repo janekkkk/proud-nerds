@@ -1,8 +1,8 @@
-import { CharacterOverview } from '../features/character/overview/CharacterOverview'
+import { CharacterOverview } from '../features/character/CharacterOverview'
 import { useState } from 'react'
 import { characterService } from '../features/character/api/character.service'
 import { Pagination } from '../shared/components/pagination/pagination'
-import { Search } from '../features/character/overview/Search'
+import { Search } from '../features/character/Search'
 
 export const HomePage = () => {
   const [characters, setCharacters] = useState<Character[]>([])
