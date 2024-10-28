@@ -1,80 +1,73 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
 
-# React Tailwindcss Boilerplate build with Vite
+# Proud Nerds
 
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+A modern web application project utilizing **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and various development tools for a seamless development experience. This project is set up for frontend development with linting, type-checking, and testing support.
 
-## What is inside?
+It's made to test my development skills while interviewing for Proud Nerds.
 
-This project uses many tools like:
+## Table of Contents
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
+- [Technologies](#technologies)
+- [Development Tools](#development-tools)
 
 ## Getting Started
 
-### Install
+To set up the project locally:
 
-Create the project.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/janekkkk/proud-nerds.git
+   cd proud-nerds
+   ```
 
-```bash
-pnpm dlx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
+2. Install dependencies:
+   ```bash
+   pnpm install
+   // or use plain old npm install
+   ```
 
-Access the project directory.
+3. Run the development server:
+   ```bash
+   npm start
+   ```
 
-```bash
-cd my-app
-```
+## Available Scripts
 
-Install dependencies.
+The following scripts are available for managing the project:
 
-```bash
-pnpm install
-```
+- **`npm start`**: Runs the project in development mode (shortcut for `npm run dev`).
+- **`npm run dev`**: Starts the Vite development server.
+- **`npm run build`**: Builds the project for production, running TypeScript compilation and Vite build.
+- **`npm run serve`**: Serves the production build for preview purposes.
+- **`npm run test`**: Runs unit tests using Vitest.
+- **`npm run test:ui`**: Opens the Vitest UI for test exploration.
+- **`npm run lint`**: Lints the codebase using ESLint with zero tolerance for warnings.
+- **`npm run typecheck`**: Type-checks the codebase using TypeScript.
 
-Serve with hot reload at <http://localhost:5173>.
+## Project Structure
 
-```bash
-pnpm run dev
-```
+The project is organized with **React** as the frontend framework and **TypeScript** for type safety. **Tailwind CSS** is used for styling, and **Vite** provides fast and optimized builds.
 
-### Lint
+## Technologies
 
-```bash
-pnpm run lint
-```
+- **React**: UI Library for building interactive interfaces.
+- **Vite**: Frontend build tool for fast, lightweight bundling.
+- **TypeScript**: Typed JavaScript for better developer experience.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI styling.
+- **Headless UI**: Unstyled, accessible UI components.
+- **Heroicons**: Beautiful hand-crafted SVG icons.
 
-### Typecheck
+## Development Tools
 
-```bash
-pnpm run typecheck
-```
+This project is configured with various tools for a smooth development workflow:
 
-### Build
+- **ESLint**: Code linter to ensure coding standards.
+- **Prettier**: Code formatter for a consistent style.
+- **Vitest**: Testing framework tailored for Vite.
+- **Testing Library**: For robust and maintainable UI tests.
+- **TypeScript ESLint**: Linting support for TypeScript.
+- **Happy DOM**: A fast, lightweight DOM environment for testing.
 
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.
