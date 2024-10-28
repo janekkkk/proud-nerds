@@ -1,17 +1,19 @@
 import { CharacterDetailDialog } from './CharacterDetailDialog'
 import { useState } from 'react'
+import { classNames } from '../../utils'
 
 interface Props {
   characters: Character[]
+  className?: string
 }
 
-export const CharacterOverview = ({ characters }: Props) => {
+export const CharacterOverview = ({ characters, className }: Props) => {
   const [selectedCharacter, setSelectedCharacter] = useState<Character>()
 
   if (characters.length > 0) {
     return (
-      <div>
-        <ul className="max-h-96 overflow-auto">
+      <div className={classNames(className, 'overflow-auto')}>
+        <ul>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {characters.map((character) => {
               return (

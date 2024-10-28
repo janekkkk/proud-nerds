@@ -5,12 +5,14 @@ interface Props {
   debounceCallback: (inputValue: string) => void
   defaultValue?: string
   debounceTime?: number
+  className?: string
 }
 
 export const Search = ({
   debounceCallback,
   defaultValue = '',
-  debounceTime: debounceTimeInMs = 1000
+  debounceTime: debounceTimeInMs = 1000,
+  className
 }: Props) => {
   const [inputValue, setInputValue] = useState(defaultValue)
   const inputRef = useRef<HTMLInputElement>()
@@ -38,7 +40,7 @@ export const Search = ({
   })
 
   return (
-    <div>
+    <div className={className}>
       <label
         htmlFor="search"
         className="block text-sm font-medium leading-6 text-gray-900"

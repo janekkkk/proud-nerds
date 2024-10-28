@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import { Button } from '../button/Button'
 import { useMount } from 'react-use'
+import { classNames } from '../../../utils'
 
 interface Props {
   paginationInfo?: PaginationInfo
   paginationUpdated: (followUpUrl: string) => void
+  className?: string
 }
 
-export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
+export const Pagination = ({
+  paginationInfo,
+  paginationUpdated,
+  className
+}: Props) => {
   const [currentPageIndex, setCurrentPageIndex] = useState(1)
   const [maxNumberOfResults, setMaxNumberOfResults] = useState(0)
 
@@ -27,7 +33,7 @@ export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
 
   useMount(() => {
     if (paginationInfo?.numberOfResults) {
-      console.log(paginationInfo)
+      console.log({ paginationInfo })
       setMaxNumberOfResults(paginationInfo?.numberOfResults)
     }
   })
@@ -36,7 +42,10 @@ export const Pagination = ({ paginationInfo, paginationUpdated }: Props) => {
     return (
       <nav
         aria-label="Pagination"
-        className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+        className={classNames(
+          'flex items-center justify-between bg-white px-4 py-3 sm:px-6',
+          className
+        )}
       >
         <div className="hidden sm:block">
           <p className="text-sm text-gray-700">

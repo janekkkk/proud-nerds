@@ -57,7 +57,7 @@ export const CharacterDetailDialog = ({ character }: Props) => {
                     {character?.name}
                   </DialogTitle>
                   <div className="mt-2">
-                    <ul className="max-h-72 overflow-auto text-sm text-gray-500">
+                    <ul className="max-h-80 overflow-auto text-sm text-gray-500">
                       <li className="flex content-center justify-center">
                         <img
                           src={character?.image}
